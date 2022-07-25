@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "F003AEB4-C8FC-4C4C-ABC0-271B97D2DC97"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9C94789B-2A72-4850-A5AF-374D5A10F2D3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LloydsDemoAppTests/CurrencyUseCaseTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "testCurrencyUseCase_whenSuccessfullyFetchesCurrencyList()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9C94789B-2A72-4850-A5AF-374D5A10F2D3 - f750785f581875e7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LloydsDemoAppTests.SearchMoviesUseCaseTests.testCurrencyList() -&gt; ()"
+                  moduleName = "LloydsDemoAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nirshah/Desktop/untitled%20folder/LloydsDemoApp/LloydsDemoAppTests/CurrencyUseCaseTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "277">
+               </Location>
+               <Location
+                  uuid = "9C94789B-2A72-4850-A5AF-374D5A10F2D3 - 2f364c4ab7020b7d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LloydsDemoAppTests.CurrencyUseCaseTests.testCurrencyUseCase_whenSuccessfullyFetchesCurrencyList() -&gt; ()"
+                  moduleName = "LloydsDemoAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nirshah/Desktop/untitled%20folder/LloydsDemoApp/LloydsDemoAppTests/CurrencyUseCaseTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "314">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FF575553-1FF9-4E2F-B0F1-4D7F2EE2C2E5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LloydsDemoAppTests/Domain/Repository/DefaultCurrencyRepositoryTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "testCurrencyRepository_whenInvalidURL()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
