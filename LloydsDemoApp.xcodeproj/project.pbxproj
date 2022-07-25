@@ -36,6 +36,7 @@
 		F0639261288E71C100C05A6A /* NetworkAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063924D288A979F00C05A6A /* NetworkAPIServiceMock.swift */; };
 		F0639262288E71E300C05A6A /* NetworkConfigMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063925F288E687C00C05A6A /* NetworkConfigMock.swift */; };
 		F0639269288EC33F00C05A6A /* CurrencyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0639268288EC33F00C05A6A /* CurrencyRepository.swift */; };
+		F063926B288EEB9600C05A6A /* NetworkAPIServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06392292886BD3200C05A6A /* NetworkAPIServiceTest.swift */; };
 		F07EA621287BEEB500D68CA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07EA620287BEEB500D68CA1 /* AppDelegate.swift */; };
 		F07EA625287BEEB500D68CA1 /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07EA624287BEEB500D68CA1 /* CurrencyListViewController.swift */; };
 		F07EA628287BEEB500D68CA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F07EA626287BEEB500D68CA1 /* Main.storyboard */; };
@@ -197,7 +198,6 @@
 		F06392302886F3AC00C05A6A /* CurrencyScene */ = {
 			isa = PBXGroup;
 			children = (
-				F0639264288E93CB00C05A6A /* Service */,
 				F07EA660287D9EF700D68CA1 /* View */,
 				F07EA65F287D9EE600D68CA1 /* ViewModel */,
 			);
@@ -234,7 +234,6 @@
 		F06392352886F64B00C05A6A /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				F06392372886F67900C05A6A /* Repository */,
 				F06392362886F65300C05A6A /* UseCase */,
 			);
 			path = Domain;
@@ -276,6 +275,7 @@
 		F063923A2886F6D200C05A6A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F06392292886BD3200C05A6A /* NetworkAPIServiceTest.swift */,
 				F0639253288B021F00C05A6A /* NetworkManagerTest.swift */,
 			);
 			path = Network;
@@ -301,7 +301,7 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		F0639251288AFC1900C05A6A /* Mock */ = {
+		F0639251288AFC1900C05A6A /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
 				F0639247288A963300C05A6A /* CurrencyRepositoryMock.swift */,
@@ -313,7 +313,7 @@
 				F063925D288DAD0500C05A6A /* CurrencyServiceProtocolMock.swift */,
 				F063925F288E687C00C05A6A /* NetworkConfigMock.swift */,
 			);
-			path = Mock;
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		F0639252288AFC8300C05A6A /* Utility */ = {
@@ -327,16 +327,7 @@
 		F0639263288E932800C05A6A /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				F06392292886BD3200C05A6A /* NetworkAPIServiceTest.swift */,
 				F063925B288DA9FB00C05A6A /* CurrencyServiceTest.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		F0639264288E93CB00C05A6A /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				F0639257288D615C00C05A6A /* CurrencyService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -355,6 +346,15 @@
 				F0639268288EC33F00C05A6A /* CurrencyRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		F063926A288EEB6300C05A6A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F06392372886F67900C05A6A /* Repository */,
+				F0639263288E932800C05A6A /* Service */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		F07EA614287BEEB500D68CA1 = {
@@ -397,11 +397,11 @@
 		F07EA636287BEEB700D68CA1 /* LloydsDemoAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				F0639263288E932800C05A6A /* Service */,
-				F0639251288AFC1900C05A6A /* Mock */,
-				F06392352886F64B00C05A6A /* Domain */,
 				F06392382886F69C00C05A6A /* Presentation */,
+				F06392352886F64B00C05A6A /* Domain */,
+				F063926A288EEB6300C05A6A /* Data */,
 				F063923A2886F6D200C05A6A /* Network */,
+				F0639251288AFC1900C05A6A /* Mocks */,
 				F063923B2886F6E800C05A6A /* Resources */,
 			);
 			path = LloydsDemoAppTests;
@@ -438,6 +438,7 @@
 		F07EA658287C8C7A00D68CA1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F06392152885159000C05A6A /* NetworkAPIService.swift */,
 				F063921F2885BDE700C05A6A /* NetworkConfiguration.swift */,
 				F07EA650287C125E00D68CA1 /* NetworkManager.swift */,
 				F0639255288D3C4D00C05A6A /* RequestProtocol.swift */,
@@ -489,7 +490,7 @@
 		F07EA666287F22BE00D68CA1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				F06392152885159000C05A6A /* NetworkAPIService.swift */,
+				F0639257288D615C00C05A6A /* CurrencyService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -768,6 +769,7 @@
 				F06392262886B0AE00C05A6A /* DefaultCurrencyRepositoryTest.swift in Sources */,
 				F063924C288A971100C05A6A /* CurrencyViewModelProtocolMock.swift in Sources */,
 				F0639262288E71E300C05A6A /* NetworkConfigMock.swift in Sources */,
+				F063926B288EEB9600C05A6A /* NetworkAPIServiceTest.swift in Sources */,
 				F0639250288A97F900C05A6A /* NetworkManagerMock.swift in Sources */,
 				F063925C288DA9FB00C05A6A /* CurrencyServiceTest.swift in Sources */,
 				F063924A288A969500C05A6A /* CurrencyUseCaseMock.swift in Sources */,

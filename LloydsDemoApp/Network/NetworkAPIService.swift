@@ -42,21 +42,3 @@ extension NetworkAPIService : NetworkServices {
         }
     }
 }
-
-
-
-
-//extension NetworkAPIService : NetworkServices {
-//
-//    func perform (request: RequestProtocol, completion : @escaping (Result<Data, NetworkError>) -> Void) {
-//
-//        let urlRequest = try! request.createURLRequest(endPoints: self.apiEndPoints)
-//
-//        self.sessionManager.request(urlRequest).done{ response in
-//            completion(.success(response))
-//        }
-//        .catch { error in
-//            completion(.failure(error as! NetworkError))
-//        }
-//    }
-//}
