@@ -35,6 +35,7 @@
 		F063925E288DAD0500C05A6A /* CurrencyServiceProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063925D288DAD0500C05A6A /* CurrencyServiceProtocolMock.swift */; };
 		F0639261288E71C100C05A6A /* NetworkAPIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063924D288A979F00C05A6A /* NetworkAPIServiceMock.swift */; };
 		F0639262288E71E300C05A6A /* NetworkConfigMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063925F288E687C00C05A6A /* NetworkConfigMock.swift */; };
+		F0639269288EC33F00C05A6A /* CurrencyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0639268288EC33F00C05A6A /* CurrencyRepository.swift */; };
 		F07EA621287BEEB500D68CA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07EA620287BEEB500D68CA1 /* AppDelegate.swift */; };
 		F07EA625287BEEB500D68CA1 /* CurrencyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07EA624287BEEB500D68CA1 /* CurrencyListViewController.swift */; };
 		F07EA628287BEEB500D68CA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F07EA626287BEEB500D68CA1 /* Main.storyboard */; };
@@ -104,6 +105,7 @@
 		F063925B288DA9FB00C05A6A /* CurrencyServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyServiceTest.swift; sourceTree = "<group>"; };
 		F063925D288DAD0500C05A6A /* CurrencyServiceProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyServiceProtocolMock.swift; sourceTree = "<group>"; };
 		F063925F288E687C00C05A6A /* NetworkConfigMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigMock.swift; sourceTree = "<group>"; };
+		F0639268288EC33F00C05A6A /* CurrencyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRepository.swift; sourceTree = "<group>"; };
 		F07EA61D287BEEB500D68CA1 /* LloydsDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LloydsDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F07EA620287BEEB500D68CA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F07EA624287BEEB500D68CA1 /* CurrencyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewController.swift; sourceTree = "<group>"; };
@@ -339,6 +341,22 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		F0639266288EC31700C05A6A /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F0639267288EC32800C05A6A /* Repository */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F0639267288EC32800C05A6A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F0639268288EC33F00C05A6A /* CurrencyRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		F07EA614287BEEB500D68CA1 = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +419,7 @@
 		F07EA656287C8C5F00D68CA1 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F0639266288EC31700C05A6A /* Interfaces */,
 				F07EA663287E8D3400D68CA1 /* UseCase */,
 				F07EA662287E8D2200D68CA1 /* Entities */,
 			);
@@ -720,6 +739,7 @@
 				F063923E2886F79800C05A6A /* CurrencyDTO.swift in Sources */,
 				F06392162885159000C05A6A /* NetworkAPIService.swift in Sources */,
 				F063925A288D699300C05A6A /* APIEndpoints.swift in Sources */,
+				F0639269288EC33F00C05A6A /* CurrencyRepository.swift in Sources */,
 				F07EA651287C125E00D68CA1 /* NetworkManager.swift in Sources */,
 				F063921A28851C8600C05A6A /* CurrencyDIContainer.swift in Sources */,
 				F06392202885BDE700C05A6A /* NetworkConfiguration.swift in Sources */,

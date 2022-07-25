@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol CurrencyRepository {
-    func fetchCurrencyList(completion: @escaping (Result<[Currency], Error>) -> Void)
-}
-
 class DefaultCurrencyRepository {
     
     let currencyService : CurrencyServiceProtocol
