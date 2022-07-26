@@ -11,13 +11,23 @@ import PromiseKit
 
 class NetworkAPIServiceMock : NetworkServices {
 
-    let data : Data
-    init(data : Data){
+    let data : Data?
+    let error : Error?
+    init(data : Data?, error : Error?){
         self.data = data
+        self.error = error
     }
     
     func perform(request: RequestProtocol) -> Promise<Data> {
         
-        .value(data)
+        return Promise { seal in
+            
+            if data != nil {
+                seal.fulfill(data!)
+            }
+            else{
+                seal.reject(NetworkError.someError)
+            }
+        }
     }
 }

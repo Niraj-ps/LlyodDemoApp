@@ -73,8 +73,6 @@ extension CurrencyListViewController : UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
             viewModel.searchCurrencyList(text : searchBar.text!)
-        }
     }
 }

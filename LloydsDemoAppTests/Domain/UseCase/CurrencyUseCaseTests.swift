@@ -14,7 +14,7 @@ class CurrencyUseCaseTests: XCTestCase {
         case failedFetching
     }
     
-    func testCurrencyUseCase_whenSuccessfullyFetchesCurrencyList(){
+    func testCurrencyRepo_whenSuccessfullyDecodedToCurrency(){
         
         let expectation = self.expectation(description: "Currency List Fetched")
         let currencyRepo = CurrencyRepositoryMock(result: .success(Currency.stub()))

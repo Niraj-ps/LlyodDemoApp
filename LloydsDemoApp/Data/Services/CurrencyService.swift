@@ -33,9 +33,8 @@ extension CurrencyService : CurrencyServiceProtocol {
         }
     }
     
-    private func decode<T: Decodable>(data: Data?) -> Result<T, NetworkError> {
+    private func decode<T: Decodable>(data: Data) -> Result<T, NetworkError> {
         do {
-            guard let data = data else { return .failure(.noResponse) }
             let result: T = try JSONDecoder().decode(T.self, from: data)
             return .success(result)
         } catch {

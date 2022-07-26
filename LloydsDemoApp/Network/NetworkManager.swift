@@ -17,6 +17,7 @@ public enum NetworkError: Error, Equatable {
     case noInternet
     case noResponse
     case parseFailed
+    case someError
 }
 
 class NetworkManager {

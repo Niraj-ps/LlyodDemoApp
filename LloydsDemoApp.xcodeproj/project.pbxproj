@@ -267,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				F06392232886991D00C05A6A /* CurrencyListViewModelTest.swift */,
-				F063924B288A971100C05A6A /* CurrencyViewModelProtocolMock.swift */,
 			);
 			path = CurrencyScene;
 			sourceTree = "<group>";
@@ -304,6 +303,7 @@
 		F0639251288AFC1900C05A6A /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				F063924B288A971100C05A6A /* CurrencyViewModelProtocolMock.swift */,
 				F0639247288A963300C05A6A /* CurrencyRepositoryMock.swift */,
 				F0639249288A969500C05A6A /* CurrencyUseCaseMock.swift */,
 				F063924D288A979F00C05A6A /* NetworkAPIServiceMock.swift */,

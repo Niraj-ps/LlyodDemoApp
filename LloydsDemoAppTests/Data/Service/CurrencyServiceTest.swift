@@ -15,10 +15,10 @@ class CurrencyServiceTest: XCTestCase {
     }
     
     func test_whenReceivedValidJsonInResponse_shouldDecodeResponseToDecodableObject() {
-        //given
+        
         let expectation = self.expectation(description: "Should decode mock object")
         let responseData = #"{"name": "Hello"}"#.data(using: .utf8)
-        let networkAPIservice = NetworkAPIServiceMock(data: responseData!)
+        let networkAPIservice = NetworkAPIServiceMock(data: responseData!, error: nil)
         let currencyService = CurrencyService(networkServices: networkAPIservice)
         let apiEndpoint = APIEndpoints(path: Constants.currencyPath)
         currencyService.request (endpoints: apiEndpoint) { (result : Result<MockModel , NetworkError>) in
@@ -30,6 +30,24 @@ class CurrencyServiceTest: XCTestCase {
                 XCTFail("Failed decoding MockObject")
             }
         }
-        wait(for: [expectation], timeout: 0.1)
+        wait(for: [expectation], timeout: 1)
     }
+    
+    func test_whenRecievedDataNotDecode() {
+        
+        let expectation = self.expectation(description: "Should decode mock object")
+        let responseData = "abc".data(using: .utf8)
+        let networkAPIservice = NetworkAPIServiceMock(data: responseData, error: nil)
+        let currencyService = CurrencyService(networkServices: networkAPIservice)
+        let apiEndpoint = APIEndpoints(path: Constants.currencyPath)
+        currencyService.request (endpoints: apiEndpoint) { (result : Result<MockModel , NetworkError>) in
+            do {
+                let _ = try result.get()
+            } catch {
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: 1)
+    }
+    
 }
