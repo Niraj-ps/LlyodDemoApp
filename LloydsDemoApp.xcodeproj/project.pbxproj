@@ -79,7 +79,6 @@
 		F06392232886991D00C05A6A /* CurrencyListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewModelTest.swift; sourceTree = "<group>"; };
 		F06392252886B0AE00C05A6A /* CurrencyRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRepositoryTest.swift; sourceTree = "<group>"; };
 		F06392272886BBD200C05A6A /* CurrencyInvalidJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CurrencyInvalidJson.json; sourceTree = "<group>"; };
-		F06392292886BD3200C05A6A /* NetworkAPIServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPIServiceTest.swift; sourceTree = "<group>"; };
 		F063923D2886F79800C05A6A /* CurrencyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDTO.swift; sourceTree = "<group>"; };
 		F063923F2886F8F500C05A6A /* CurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResponse.swift; sourceTree = "<group>"; };
 		F0639241288A5C2900C05A6A /* LloydsMainStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LloydsMainStoryboard.swift; sourceTree = "<group>"; };
@@ -261,7 +260,6 @@
 		F063923A2886F6D200C05A6A /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				F06392292886BD3200C05A6A /* NetworkAPIServiceTest.swift */,
 				F0639253288B021F00C05A6A /* NetworkManagerTest.swift */,
 			);
 			path = Network;

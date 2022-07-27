@@ -17,7 +17,7 @@ class CurrencyListViewModelTest: XCTestCase {
     func test_whenCurrencyUseCaseRetrievesList_thenViewModelShouldHaveData() {
        
         var currencyUseCase = CurrencyUseCaseMock(result: .success(Currency.stub()))
-        currencyUseCase.expectation = self.expectation(description: "contains same data")
+        currencyUseCase.expectation = self.expectation(description: "contains data")
         let viewModel = CurrencyListViewModel(currencyUseCase: currencyUseCase)
         viewModel.requestCurrencyAPI()
         waitForExpectations(timeout: 5, handler: nil)
