@@ -15,21 +15,22 @@ class CurrencyServiceProtocolMock : CurrencyServiceProtocol {
         self.fileName = fileName
     }
     
-    func request<T>(endpoints: RequestProtocol, completion: @escaping (Result<T, NetworkError>) -> Void) where T : Decodable {
+    func requestCurrencyList(completion: @escaping (Result<[CurrencyDTO], Error>) -> Void) {
         
         let testBundle = Bundle(for: type(of: self))
         if let url = testBundle.url(forResource: fileName, withExtension: "json") {
                 do {
                     let data = try Data(contentsOf: url)
                     let decoder = JSONDecoder()
-                    let jsonData = try decoder.decode(T.self, from: data)
-                    completion(.success(jsonData))
+                    let jsonData = try decoder.decode(CurrencyResponse.self, from: data)
+                    completion(.success(jsonData.currencies))
                 } catch {
-                    completion(.failure(.noResponse))
+                    completion(.failure(NetworkError.parseFailed))
                 }
             }
             else{
-                completion(.failure(.invalidURL))
+                completion(.failure(NetworkError.invalidURL))
             }
         }
 }
+

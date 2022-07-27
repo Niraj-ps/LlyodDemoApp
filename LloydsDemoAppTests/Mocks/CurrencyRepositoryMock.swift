@@ -8,7 +8,7 @@
 import Foundation
 @testable import LloydsDemoApp
 
-struct CurrencyRepositoryMock : CurrencyRepository {
+struct CurrencyRepositoryMock : CurrencyRepositoryProtocol {
     
     var result: Result<[Currency], Error>
 

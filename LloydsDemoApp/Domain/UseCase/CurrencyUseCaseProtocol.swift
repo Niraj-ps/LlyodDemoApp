@@ -7,19 +7,19 @@
 
 import Foundation
 
-protocol CurrencyUseCase{
+protocol CurrencyUseCaseProtocol{
     func getCurrencyList(completion: @escaping (Result<[Currency], Error>) -> Void)
 }
 
-class DefaultCurrencyUseCase  {
+class CurrencyUseCase  {
    
-    let currencyRepository : CurrencyRepository
-    init(currencyRepository : CurrencyRepository){
+    let currencyRepository : CurrencyRepositoryProtocol
+    init(currencyRepository : CurrencyRepositoryProtocol){
         self.currencyRepository = currencyRepository
     }
 }
 
-extension DefaultCurrencyUseCase : CurrencyUseCase {
+extension CurrencyUseCase : CurrencyUseCaseProtocol {
     
     func getCurrencyList(completion: @escaping (Result<[Currency], Error>) -> Void) {
         self.currencyRepository.fetchCurrencyList { result in

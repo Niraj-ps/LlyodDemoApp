@@ -14,14 +14,14 @@ class CurrencyListViewModelTest: XCTestCase {
         case someError
     }
     
-    func test_whenCurrencyUseCaseRetrievesList_thenViewModelContainsData() {
+    func test_whenCurrencyUseCaseRetrievesList_thenViewModelShouldHaveData() {
        
         var currencyUseCase = CurrencyUseCaseMock(result: .success(Currency.stub()))
-        currencyUseCase.expectation = self.expectation(description: "contains same no of data")
+        currencyUseCase.expectation = self.expectation(description: "contains same data")
         let viewModel = CurrencyListViewModel(currencyUseCase: currencyUseCase)
-        viewModel.requestAPIData(currencyViewDelegate: CurrencyViewModelProtocolMock())
+        viewModel.requestCurrencyAPI()
         waitForExpectations(timeout: 5, handler: nil)
-        XCTAssertEqual(viewModel.searchItems.count, 2)
+        XCTAssertEqual(viewModel.numberOfRows(), 2)
     }
 
     
@@ -30,7 +30,7 @@ class CurrencyListViewModelTest: XCTestCase {
         var currencyUseCase = CurrencyUseCaseMock(result: .failure(CurrencyError.someError))
         currencyUseCase.expectation = self.expectation(description: "contain errors")
         let viewModel = CurrencyListViewModel(currencyUseCase: currencyUseCase)
-        viewModel.requestAPIData(currencyViewDelegate: CurrencyViewModelProtocolMock())
+        viewModel.requestCurrencyAPI()
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertNotNil(viewModel.error)
     }
@@ -40,10 +40,11 @@ class CurrencyListViewModelTest: XCTestCase {
         var currencyUseCase = CurrencyUseCaseMock(result: .success(Currency.stub()))
         currencyUseCase.expectation = self.expectation(description: "contains search text in list")
         let viewModel = CurrencyListViewModel(currencyUseCase: currencyUseCase)
-        viewModel.requestAPIData(currencyViewDelegate: CurrencyViewModelProtocolMock())
+        viewModel.requestCurrencyAPI()
         waitForExpectations(timeout: 5, handler: nil)
         viewModel.searchCurrencyList(text: "Euro")
-        XCTAssertEqual(viewModel.searchItems.count, 1)
+        let currency = viewModel.getCurrencyAt(index: 0)
+        XCTAssertEqual(currency.currencyName, "Euro")
     }
     
 }

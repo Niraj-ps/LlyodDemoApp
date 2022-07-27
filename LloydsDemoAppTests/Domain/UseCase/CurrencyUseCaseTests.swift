@@ -14,11 +14,10 @@ class CurrencyUseCaseTests: XCTestCase {
         case failedFetching
     }
     
-    func testCurrencyRepo_whenSuccessfullyDecodedToCurrency(){
-        
+    func testCurrencyUseCase_whenSuccessfullyRetrievesList(){
         let expectation = self.expectation(description: "Currency List Fetched")
         let currencyRepo = CurrencyRepositoryMock(result: .success(Currency.stub()))
-        let usecase = DefaultCurrencyUseCase(currencyRepository: currencyRepo)
+        let usecase = CurrencyUseCase(currencyRepository: currencyRepo)
         var recents = [Currency]()
         usecase.getCurrencyList { result in
             switch result {
@@ -34,10 +33,9 @@ class CurrencyUseCaseTests: XCTestCase {
     }
     
     func testCurrencyUseCase_whenFailedToFetchCurrencyList(){
-        
         let expectation = self.expectation(description: "Currency List Not Fetched")
         let currencyRepo = CurrencyRepositoryMock(result: .failure(CurrencyFetchError.failedFetching))
-        let usecase = DefaultCurrencyUseCase(currencyRepository: currencyRepo)
+        let usecase = CurrencyUseCase(currencyRepository: currencyRepo)
         var usecaseFailedError : Error?
         usecase.getCurrencyList { result in
             switch result {

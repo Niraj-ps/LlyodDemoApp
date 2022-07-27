@@ -8,7 +8,6 @@
 import Foundation
 
 struct Currency  {
-
     var currencySymbol: String
     var currencyName: String
     var currencyCode: String

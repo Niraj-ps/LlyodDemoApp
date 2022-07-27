@@ -7,43 +7,63 @@
 
 import Foundation
 
+protocol CurrencyListViewModelProtocol {
+    
+    func requestCurrencyAPI()
+    func numberOfRows() -> Int
+    func getCurrencyAt(index : Int) -> Currency
+    func updateCurencyListUsingSearch(text : String)
+}
+
 class CurrencyListViewModel {
   
-    var itemLists = [Currency]()
-    var currencyUseCase : CurrencyUseCase
-    var searchItems = [Currency]()
+    private var currencyList = [Currency]()
+    private let currencyUseCase : CurrencyUseCaseProtocol
+    private var currencySearchList = [Currency]()
     var error: Error?
-    var delegate : CurrencyViewProtocol?
+    weak var delegate : CurrencyViewProtocol?
     
-    init(currencyUseCase : CurrencyUseCase) {
+    init(currencyUseCase : CurrencyUseCaseProtocol) {
         self.currencyUseCase = currencyUseCase
     }
 
-    func requestAPIData(currencyViewDelegate : CurrencyViewProtocol) {
+    func searchCurrencyList(text : String) {
         
-        self.delegate = currencyViewDelegate
+        if text.isEmpty {
+            currencySearchList = currencyList
+        }
+        else{
+            currencySearchList = currencyList.filter({ currency in
+                currency.currencyName.lowercased().contains(text.lowercased())
+            })
+        }
+        self.delegate?.updateItemData()
+    }
+}
+
+extension CurrencyListViewModel : CurrencyListViewModelProtocol {
+    
+    func getCurrencyAt(index: Int) -> Currency {
+        return self.currencySearchList[index]
+    }
+    
+    func numberOfRows() -> Int {
+        self.currencySearchList.count
+    }
+    
+    func requestCurrencyAPI() {
         self.currencyUseCase.getCurrencyList { [weak self] result in
-            
             switch result {
                 case .success(let currencyData):
-                    self?.itemLists = currencyData
+                    self?.currencyList = currencyData
                 case .failure(let error):
                     self?.error = error
             }
             self?.searchCurrencyList(text: "")
         }
     }
-
-    func searchCurrencyList(text : String) {
-        
-        if text.isEmpty {
-            searchItems = itemLists
-        }
-        else{
-            searchItems = itemLists.filter({ currency in
-                currency.currencyName.lowercased().contains(text.lowercased())
-            })
-        }
-        self.delegate?.updateItemData()
+    
+    func updateCurencyListUsingSearch(text : String){
+        self.searchCurrencyList(text: text)
     }
 }

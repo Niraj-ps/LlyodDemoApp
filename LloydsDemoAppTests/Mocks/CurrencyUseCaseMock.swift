@@ -8,7 +8,7 @@
 import XCTest
 @testable import LloydsDemoApp
 
-struct CurrencyUseCaseMock: CurrencyUseCase {
+struct CurrencyUseCaseMock: CurrencyUseCaseProtocol {
     
     var result: Result<[Currency], Error>
     var expectation : XCTestExpectation?

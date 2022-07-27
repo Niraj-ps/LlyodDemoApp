@@ -8,37 +8,28 @@
 import Foundation
 
 protocol CurrencyServiceProtocol {
-    func request <T : Decodable> (endpoints : RequestProtocol, completion : @escaping (Result< T, NetworkError>) -> Void)
+    func requestCurrencyList(completion : @escaping (Result<[CurrencyDTO], Error>) -> Void)
 }
 
 class CurrencyService {
     
-    var networkServices : NetworkServices
-    init(networkServices : NetworkServices) {
-        self.networkServices = networkServices
+    let networkManager : NetworkManagerProtocol
+    let currencyEndpoint : CurrencyEndpoint
+    init(networkManager : NetworkManagerProtocol, currencyEndpoint : CurrencyEndpoint) {
+        self.networkManager = networkManager
+        self.currencyEndpoint = currencyEndpoint
     }
-    
 }
 
 extension CurrencyService : CurrencyServiceProtocol {
     
-    func request <T : Decodable> (endpoints : RequestProtocol, completion : @escaping (Result<T, NetworkError>) -> Void) {
-        
-        self.networkServices.perform(request: endpoints).done { data in
-            let result: Result<T, NetworkError> = self.decode(data: data)
-            completion(result)
+    func requestCurrencyList(completion : @escaping (Result<[CurrencyDTO], Error>) -> Void) {
+        self.networkManager.request(endpoint: self.currencyEndpoint, responseModel: CurrencyResponse.self).done { currencyResponse in
+            let currencyData = currencyResponse.currencies
+            completion(.success(currencyData))
         }
         .catch { error in
             completion(.failure(error as! NetworkError))
-        }
-    }
-    
-    private func decode<T: Decodable>(data: Data) -> Result<T, NetworkError> {
-        do {
-            let result: T = try JSONDecoder().decode(T.self, from: data)
-            return .success(result)
-        } catch {
-            return .failure(.parseFailed)
         }
     }
 }

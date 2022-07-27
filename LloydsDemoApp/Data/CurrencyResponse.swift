@@ -16,12 +16,11 @@ struct CurrencyResponse : Codable {
         }
         var intValue: Int? { return nil }
         init?(intValue: Int) { return nil }
-
         static let currencySymbol = CurrencyKey(stringValue: "symbol")
         static let currencyName  = CurrencyKey(stringValue: "name")
     }
     
-    var decodedCurrency: [CurrencyDTO] = []
+    var currencies: [CurrencyDTO] = []
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CurrencyKey.self)
@@ -31,7 +30,7 @@ struct CurrencyResponse : Codable {
             let currencySymbol = try nested.decode(String.self, forKey: .currencySymbol)
             let currencyName = try nested.decode(String.self, forKey: .currencyName)
             let currencyDTO = CurrencyDTO(currencySymbol: currencySymbol, currencyName: currencyName, currencyCode: key.stringValue)
-            decodedCurrency.append(currencyDTO)
+            currencies.append(currencyDTO)
         }
     }
 }

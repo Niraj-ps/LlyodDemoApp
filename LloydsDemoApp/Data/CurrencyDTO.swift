@@ -17,7 +17,6 @@ struct CurrencyDTO : Codable {
 extension CurrencyDTO {
   
    func toDomain() -> Currency {
-    
       return Currency(currencySymbol: currencySymbol, currencyName: currencyName, currencyCode: currencyCode)
   }
 }

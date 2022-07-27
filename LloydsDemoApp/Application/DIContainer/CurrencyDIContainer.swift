@@ -9,37 +9,41 @@ import Foundation
 
 final class CurrencyDIContainer {
 
-    func makeCurrencyUseCase() -> CurrencyUseCase {
-        return DefaultCurrencyUseCase(currencyRepository: makeCurrencyRepository())
+    static var mainStoryBoard = LloydsMainStoryboard()
+
+   private func makeCurrencyUseCase() -> CurrencyUseCaseProtocol {
+        return CurrencyUseCase(currencyRepository: makeCurrencyRepository())
     }
     
-    func makeCurrencyRepository() -> CurrencyRepository {
-        return DefaultCurrencyRepository(currencyService: makeCurrencyService())
+    private func makeCurrencyRepository() -> CurrencyRepositoryProtocol {
+        return CurrencyRepository(currencyService: makeCurrencyService())
     }
     
-    func makeCurrencyService() -> CurrencyService {
-        
-        return CurrencyService(networkServices: makeNetworkService())
+    private func makeCurrencyService() -> CurrencyService {
+        let apiEndPoints = CurrencyEndpoint(path: Constants.currencyPath)
+        return CurrencyService(networkManager: makeNetworkManager(), currencyEndpoint: apiEndPoints)
     }
     
-    func makeNetworkManager() -> NetworkManagerProtocol {
+    private func makeNetworkManager() -> NetworkManagerProtocol {
         return NetworkManager()
     }
     
-    func makeNetworkService() -> NetworkAPIService {
-        let config = NetworkConfiguration.init(baseURLPath: Constants.apiEndPoint)
-        return NetworkAPIService(sessionManager: makeNetworkManager(), apiEndPoints: config)
-    }
-    
-    func makeCurrencyListViewController() -> CurrencyListViewController {
+     func makeCurrencyListViewController() -> CurrencyListViewController {
         
-        let currencyListViewController = CurrencyListViewController.create(with: makeCurrencyListViewModel())
+        let currencyListViewController = CurrencyDIContainer.create(with: makeCurrencyListViewModel())
         return currencyListViewController
     }
     
-    func makeCurrencyListViewModel() -> CurrencyListViewModel{
+    private func makeCurrencyListViewModel() -> CurrencyListViewModel{
         
         return CurrencyListViewModel(currencyUseCase: makeCurrencyUseCase())
+    }
+    
+    static func create(with viewModel: CurrencyListViewModel) -> CurrencyListViewController {
+        let viewController = mainStoryBoard.createCurrencyListViewController()
+        viewModel.delegate = viewController
+        viewController.viewModel = viewModel
+        return viewController
     }
     
 }

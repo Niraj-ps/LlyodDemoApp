@@ -9,18 +9,25 @@
 import PromiseKit
 
 
-struct NetworkManagerMock : NetworkManagerProtocol {
+class NetworkManagerMock : NetworkManagerProtocol {
     
-    var response : (Data?, Error?)
-    func request (_ urlRequest: URLRequest) -> Promise<Data> {
+    func request<T>(endpoint: Endpoint, responseModel: T.Type) -> Promise<T> where T : Decodable {
         
-            return Promise { seal in
-                if response.1 == nil {
-                    seal.fulfill(response.0!)
-                }
-                else{
-                    seal.reject(response.1!)
+        return Promise { seal in
+        let testBundle = Bundle(for: type(of: self))
+        if let url = testBundle.url(forResource: endpoint.path, withExtension: "json") {
+                do {
+                    let data = try Data(contentsOf: url)
+                    let decoder = JSONDecoder()
+                    let jsonData = try decoder.decode(responseModel.self, from: data)
+                    seal.fulfill(jsonData)
+                } catch {
+                    seal.reject(NetworkError.noResponse)
                 }
             }
+            else{
+                seal.reject(NetworkError.invalidURL)
+            }
         }
+    }
 }

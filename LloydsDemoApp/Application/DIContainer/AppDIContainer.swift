@@ -11,7 +11,6 @@ import UIKit
 final class AppDIContainer {
         
     func makeCurrencyDIContainer() -> CurrencyDIContainer {
-        
         return CurrencyDIContainer()
     }
     
