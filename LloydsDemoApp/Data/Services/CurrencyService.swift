@@ -14,17 +14,16 @@ protocol CurrencyServiceProtocol {
 class CurrencyService {
     
     let networkManager : NetworkManagerProtocol
-    let currencyEndpoint : CurrencyEndpoint
-    init(networkManager : NetworkManagerProtocol, currencyEndpoint : CurrencyEndpoint) {
+    init(networkManager : NetworkManagerProtocol) {
         self.networkManager = networkManager
-        self.currencyEndpoint = currencyEndpoint
     }
 }
 
 extension CurrencyService : CurrencyServiceProtocol {
     
     func requestCurrencyList(completion : @escaping (Result<[CurrencyDTO], Error>) -> Void) {
-        self.networkManager.request(endpoint: self.currencyEndpoint, responseModel: CurrencyResponse.self).done { currencyResponse in
+
+        self.networkManager.request(endpoint: CurrencyEndpoint.currencyList, responseModel: CurrencyResponse.self).done { currencyResponse in
             let currencyData = currencyResponse.currencies
             completion(.success(currencyData))
         }

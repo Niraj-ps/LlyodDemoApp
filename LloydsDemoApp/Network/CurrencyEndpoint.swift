@@ -7,6 +7,15 @@
 
 import Foundation
 
-public struct CurrencyEndpoint : Endpoint {
-    var path: String
+enum CurrencyEndpoint {
+    case currencyList
+}
+
+extension CurrencyEndpoint: Endpoint {
+    var path: String {
+        switch self {
+        case .currencyList:
+            return Constants.currencyPath
+        }
+    }
 }

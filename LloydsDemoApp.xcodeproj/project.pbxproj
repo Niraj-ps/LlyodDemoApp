@@ -10,6 +10,7 @@
 		74D3FC9DD8AA6FA93FD9DCC7 /* Pods_LloydsDemoApp_LloydsDemoAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 876321F830D6CBD9689FE015 /* Pods_LloydsDemoApp_LloydsDemoAppUITests.framework */; };
 		B07591C202A24E9F1D61DFDE /* Pods_LloydsDemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 720E2E63BA06189A7394B0A0 /* Pods_LloydsDemoApp.framework */; };
 		E20068F456C6D668CC13C730 /* Pods_LloydsDemoAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4651163A81D73C641B55BFB2 /* Pods_LloydsDemoAppTests.framework */; };
+		F046AB802892CCB700363893 /* CurrencyEndPointMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F046AB7F2892CCB700363893 /* CurrencyEndPointMock.swift */; };
 		F063921A28851C8600C05A6A /* CurrencyDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063921928851C8600C05A6A /* CurrencyDIContainer.swift */; };
 		F063921C28855BBD00C05A6A /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063921B28855BBD00C05A6A /* AppDIContainer.swift */; };
 		F063922228865D8000C05A6A /* CurrencyUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063922128865D8000C05A6A /* CurrencyUseCaseTests.swift */; };
@@ -73,6 +74,7 @@
 		876321F830D6CBD9689FE015 /* Pods_LloydsDemoApp_LloydsDemoAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LloydsDemoApp_LloydsDemoAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		916112311E832E241122032F /* Pods-LloydsDemoAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LloydsDemoAppTests.release.xcconfig"; path = "Target Support Files/Pods-LloydsDemoAppTests/Pods-LloydsDemoAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		B6AE8F2DD31498D2C6F202BC /* Pods-LloydsDemoApp-LloydsDemoAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LloydsDemoApp-LloydsDemoAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-LloydsDemoApp-LloydsDemoAppUITests/Pods-LloydsDemoApp-LloydsDemoAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F046AB7F2892CCB700363893 /* CurrencyEndPointMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyEndPointMock.swift; sourceTree = "<group>"; };
 		F063921928851C8600C05A6A /* CurrencyDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDIContainer.swift; sourceTree = "<group>"; };
 		F063921B28855BBD00C05A6A /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		F063922128865D8000C05A6A /* CurrencyUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyUseCaseTests.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 		F0639251288AFC1900C05A6A /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				F046AB7F2892CCB700363893 /* CurrencyEndPointMock.swift */,
 				F0639247288A963300C05A6A /* CurrencyRepositoryMock.swift */,
 				F0639249288A969500C05A6A /* CurrencyUseCaseMock.swift */,
 				F063924F288A97F900C05A6A /* NetworkManagerMock.swift */,
@@ -739,6 +742,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F046AB802892CCB700363893 /* CurrencyEndPointMock.swift in Sources */,
 				F0639254288B021F00C05A6A /* NetworkManagerTest.swift in Sources */,
 				F0639248288A963300C05A6A /* CurrencyRepositoryMock.swift in Sources */,
 				F063925E288DAD0500C05A6A /* CurrencyServiceProtocolMock.swift in Sources */,

@@ -14,8 +14,8 @@ class NetworkManagerTest : XCTestCase {
     func test_shouldReturnProperResponse() {
 
         let expectation = self.expectation(description: "Return proper data that is passed")
-        let networkManager = NetworkManagerMock()
-        let apiEndpoints = CurrencyEndpoint(path: "CurrencyListJson")
+        let networkManager = NetworkManagerMock(filePath: "CurrencyListJson")
+        let apiEndpoints = CurrencyEndPointMock.currencyJSON
         var currencyResponse : CurrencyResponse?
         networkManager.request(endpoint:apiEndpoints, responseModel: CurrencyResponse.self).done { response in
             currencyResponse =  response
@@ -31,8 +31,8 @@ class NetworkManagerTest : XCTestCase {
     func test_ShouldReturnErrorIfFailedToFetchdData() {
 
         let expectation = self.expectation(description: "Should return error")
-        let networkManager = NetworkManagerMock()
-        let apiEndpoints = CurrencyEndpoint(path: "currency")
+        let networkManager = NetworkManagerMock(filePath: "CurrencyInvalidJson")
+        let apiEndpoints = CurrencyEndPointMock.currencyInvalidJSON
         var currencyResponse : CurrencyResponse?
         networkManager.request(endpoint:apiEndpoints, responseModel: CurrencyResponse.self).done { response in
             currencyResponse =  response

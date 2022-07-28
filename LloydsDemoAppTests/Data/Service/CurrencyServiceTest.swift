@@ -1,10 +1,3 @@
-//
-//  CurrencyServiceTest.swift
-//  LloydsDemoAppTests
-//
-//  Created by Niraj Shah on 24/07/22.
-//
-
 import XCTest
 @testable import LloydsDemoApp
 
@@ -13,7 +6,7 @@ class CurrencyServiceTest: XCTestCase {
     func test_whenReceivedValidJsonInResponse_shouldDecodeResponseToDecodableObject() {
         
         let expectation = self.expectation(description: "Should decode mock object")
-        let currencyService = CurrencyService(networkManager: NetworkManagerMock(), currencyEndpoint: CurrencyEndpoint(path: "CurrencyListJson"))
+        let currencyService = CurrencyService(networkManager: NetworkManagerMock(filePath: "CurrencyListJson"))
         currencyService.requestCurrencyList { result in
             do {
                 let object = try result.get()
@@ -29,7 +22,7 @@ class CurrencyServiceTest: XCTestCase {
     func test_whenRecievedInValidJson_throwsError() {
         
         let expectation = self.expectation(description: "Invalid Json")
-        let currencyService = CurrencyService(networkManager: NetworkManagerMock(), currencyEndpoint: CurrencyEndpoint(path: "CurrencyInvalidJson"))
+        let currencyService = CurrencyService(networkManager: NetworkManagerMock(filePath: "CurrencyInvalidJson"))
         var invalidJSONError : Error?
         currencyService.requestCurrencyList { result in
             switch result {
@@ -49,7 +42,7 @@ class CurrencyServiceTest: XCTestCase {
     func test_whenRecievedInValidURL_throwsError(){
 
         let expectation = self.expectation(description: "Invalid URL")
-        let currencyService = CurrencyService(networkManager: NetworkManagerMock(), currencyEndpoint: CurrencyEndpoint(path: "4jk./}jik"))
+        let currencyService = CurrencyService(networkManager: NetworkManagerMock(filePath: "4jk./}jik"))
         var invalidURLError : NetworkError?
         currencyService.requestCurrencyList { result in
             switch result {

@@ -20,8 +20,7 @@ final class CurrencyDIContainer {
     }
     
     private func makeCurrencyService() -> CurrencyService {
-        let apiEndPoints = CurrencyEndpoint(path: Constants.currencyPath)
-        return CurrencyService(networkManager: makeNetworkManager(), currencyEndpoint: apiEndPoints)
+        return CurrencyService(networkManager: makeNetworkManager())
     }
     
     private func makeNetworkManager() -> NetworkManagerProtocol {

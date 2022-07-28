@@ -10,11 +10,16 @@ import PromiseKit
 
 class NetworkManagerMock : NetworkManagerProtocol {
     
+    var filePath : String
+    init(filePath : String = ""){
+        self.filePath = filePath
+    }
+    
     func request<T>(endpoint: Endpoint, responseModel: T.Type) -> Promise<T> where T : Decodable {
         
         return Promise { seal in
         let testBundle = Bundle(for: type(of: self))
-        if let url = testBundle.url(forResource: endpoint.path, withExtension: "json") {
+        if let url = testBundle.url(forResource: filePath, withExtension: "json") {
                 do {
                     let data = try Data(contentsOf: url)
                     let decoder = JSONDecoder()
