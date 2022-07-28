@@ -16,3 +16,12 @@ extension Currency {
         return [eCurrency, iCurrency]
     }
 }
+
+extension CurrencyDTO {
+    
+    static func stub() -> [Self] {
+        let eCurrency = self.init(currencySymbol: "€", currencyName: "Euro", currencyCode: "EUR")
+        let iCurrency = self.init(currencySymbol: "₹", currencyName: "Indian Rupee", currencyCode: "INR")
+        return [eCurrency, iCurrency]
+    }
+}

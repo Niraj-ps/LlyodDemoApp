@@ -10,10 +10,10 @@ import XCTest
 
 class CurrencyRepositoryTest: XCTestCase {
     
-    func testCurrencyRepository_whenDataDecodedToDomainModel() {
+    func testCurrencyRepository_whenServiceReturnsDataModel() {
         
-        let expectation = self.expectation(description: "Fetched Currency repo List")
-        let currencyServiceMock = CurrencyServiceProtocolMock(fileName: "CurrencyListJson")
+        let expectation = self.expectation(description: "Fetched Currency Data Model")
+        let currencyServiceMock = CurrencyServiceProtocolMock(result: .success(CurrencyDTO.stub()))
         let repository = CurrencyRepository(currencyService: currencyServiceMock)
         var recents = [Currency]()
         repository.fetchCurrencyList { result in
@@ -29,44 +29,22 @@ class CurrencyRepositoryTest: XCTestCase {
         XCTAssertTrue(recents.count > 0)
     }
     
-    func testCurrencyRepository_whenInvalidURL(){
-
-        let expectation = self.expectation(description: "Currency List Not Fetched")
-        let currencyServiceMock = CurrencyServiceProtocolMock(fileName: "4jk./jik")
+    func testCurrencyRepository_whenServiceReturnsError() {
+        
+        let expectation = self.expectation(description: "Fetched Currency Data Model")
+        let currencyServiceMock = CurrencyServiceProtocolMock(result: .failure(CurrencyFetchError.failedFetching))
         let repository = CurrencyRepository(currencyService: currencyServiceMock)
-        var invalidURLError : Error?
+        var recents = [Currency]()
         repository.fetchCurrencyList { result in
             switch result {
-            case .success(_):
-                break
-            case .failure(let error):
-                invalidURLError = error
+            case .success(let currencyData):
+                recents = currencyData
+            case .failure(_):
                 expectation.fulfill()
                 break
             }
         }
         waitForExpectations(timeout: 5, handler: nil)
-        XCTAssertTrue(invalidURLError != nil)
+        XCTAssertEqual(recents.count, 0)
     }
-
-    func testCurrencyRepository_whenInvalidJSON() {
-
-        let expectation = self.expectation(description: "Currency List Not Fetched")
-        let currencyServiceMock = CurrencyServiceProtocolMock(fileName: "CurrencyInvalidJson")
-        let repository = CurrencyRepository(currencyService: currencyServiceMock)
-        var invalidJSONError : Error?
-        repository.fetchCurrencyList { result in
-            switch result {
-            case .success(_):
-                break
-            case .failure(let error):
-                invalidJSONError = error
-                expectation.fulfill()
-                break
-            }
-        }
-        waitForExpectations(timeout: 5, handler: nil)
-        XCTAssertTrue(invalidJSONError != nil)
-    }
-    
 }

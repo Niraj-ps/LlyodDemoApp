@@ -11,7 +11,7 @@ import PromiseKit
 
 class NetworkManagerTest : XCTestCase {
 
-    func test_whenMockDataPassed_shouldReturnProperResponse() {
+    func test_shouldReturnProperResponse() {
 
         let expectation = self.expectation(description: "Return proper data that is passed")
         let networkManager = NetworkManagerMock()
@@ -28,9 +28,9 @@ class NetworkManagerTest : XCTestCase {
         XCTAssertNotNil(currencyResponse)
     }
 
-    func test_whenNotConnectedToInternetReturnNotConnectedError () {
+    func test_ShouldReturnErrorIfFailedToFetchdData() {
 
-        let expectation = self.expectation(description: "Return proper data that is passed")
+        let expectation = self.expectation(description: "Should return error")
         let networkManager = NetworkManagerMock()
         let apiEndpoints = CurrencyEndpoint(path: "currency")
         var currencyResponse : CurrencyResponse?
@@ -44,6 +44,5 @@ class NetworkManagerTest : XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
 
         XCTAssertNil(currencyResponse)
-
     }
 }

@@ -10,13 +10,9 @@ import XCTest
 
 class CurrencyUseCaseTests: XCTestCase {
     
-    enum CurrencyFetchError : Error {
-        case failedFetching
-    }
-    
-    func testCurrencyUseCase_whenSuccessfullyRetrievesList(){
+    func testCurrencyUseCase_whenRepoSuccefullyReturnsDomainModel(){
         let expectation = self.expectation(description: "Currency List Fetched")
-        let currencyRepo = CurrencyRepositoryMock(result: .success(Currency.stub()))
+        let currencyRepo = CurrencyRepositoryMock(result: .success(CurrencyDTO.stub()))
         let usecase = CurrencyUseCase(currencyRepository: currencyRepo)
         var recents = [Currency]()
         usecase.getCurrencyList { result in
@@ -32,7 +28,7 @@ class CurrencyUseCaseTests: XCTestCase {
         XCTAssertTrue(recents.count == 2)
     }
     
-    func testCurrencyUseCase_whenFailedToFetchCurrencyList(){
+    func testCurrencyUseCase_whenRepoFailedToReturnDomainModel(){
         let expectation = self.expectation(description: "Currency List Not Fetched")
         let currencyRepo = CurrencyRepositoryMock(result: .failure(CurrencyFetchError.failedFetching))
         let usecase = CurrencyUseCase(currencyRepository: currencyRepo)
@@ -50,4 +46,8 @@ class CurrencyUseCaseTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertTrue(usecaseFailedError != nil)
     }
+}
+
+enum CurrencyFetchError : Error {
+    case failedFetching
 }

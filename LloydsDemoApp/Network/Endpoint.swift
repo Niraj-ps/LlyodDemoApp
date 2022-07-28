@@ -6,12 +6,6 @@
 //
 
 import Foundation
-import PromiseKit
-
-enum RequestType: String {
-  case GET
-  case POST
-}
 
 protocol Endpoint {
     var scheme: String { get }

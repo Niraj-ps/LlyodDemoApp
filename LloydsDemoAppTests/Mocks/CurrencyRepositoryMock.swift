@@ -10,9 +10,15 @@ import Foundation
 
 struct CurrencyRepositoryMock : CurrencyRepositoryProtocol {
     
-    var result: Result<[Currency], Error>
+    var result: Result<[CurrencyDTO], Error>
 
     func fetchCurrencyList(completion: @escaping (Result<[Currency], Error>) -> Void) {
-        completion(result)
+            
+        switch result {
+        case .success(let currencyDTO):
+            completion(.success(currencyDTO.map{$0.toDomain()}))
+        case .failure(let error):
+            completion(.failure(error))
+        }
     }
 }

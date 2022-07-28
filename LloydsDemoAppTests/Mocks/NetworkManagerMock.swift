@@ -8,7 +8,6 @@
 @testable import LloydsDemoApp
 import PromiseKit
 
-
 class NetworkManagerMock : NetworkManagerProtocol {
     
     func request<T>(endpoint: Endpoint, responseModel: T.Type) -> Promise<T> where T : Decodable {
@@ -22,7 +21,7 @@ class NetworkManagerMock : NetworkManagerProtocol {
                     let jsonData = try decoder.decode(responseModel.self, from: data)
                     seal.fulfill(jsonData)
                 } catch {
-                    seal.reject(NetworkError.noResponse)
+                    seal.reject(NetworkError.parseFailed)
                 }
             }
             else{
