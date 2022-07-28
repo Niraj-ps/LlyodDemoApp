@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var appDIContainer = AppDIContainer()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        appDIContainer.loadCurrencyModule(window: window!)
+        appDIContainer.loadCurrencyModule(window: window)
         return true
     }
 }

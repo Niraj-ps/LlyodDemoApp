@@ -29,7 +29,7 @@ extension CurrencyService : CurrencyServiceProtocol {
             completion(.success(currencyData))
         }
         .catch { error in
-            completion(.failure(error as! NetworkError))
+            completion(.failure(error))
         }
     }
 }

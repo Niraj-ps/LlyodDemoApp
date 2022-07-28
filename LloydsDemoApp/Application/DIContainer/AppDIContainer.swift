@@ -19,9 +19,9 @@ final class AppDIContainer {
         return currencyDIContainer.makeCurrencyListViewController()
     }
     
-    func loadCurrencyModule(window : UIWindow) {
+    func loadCurrencyModule(window : UIWindow?) {
         let listViewController = makeCurrencyListViewController()
-        window.rootViewController = UINavigationController(
+        window?.rootViewController = UINavigationController(
             rootViewController: listViewController
         )
     }
