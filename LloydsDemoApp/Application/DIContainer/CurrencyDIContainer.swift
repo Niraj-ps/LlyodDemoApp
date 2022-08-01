@@ -8,10 +8,10 @@
 import Foundation
 
 final class CurrencyDIContainer {
+    
+    let mainStoryBoard = LloydsMainStoryboard()
 
-    static var mainStoryBoard = LloydsMainStoryboard()
-
-   private func makeCurrencyUseCase() -> CurrencyUseCaseProtocol {
+    private func makeCurrencyUseCase() -> CurrencyUseCaseProtocol {
         return CurrencyUseCase(currencyRepository: makeCurrencyRepository())
     }
     
@@ -27,22 +27,19 @@ final class CurrencyDIContainer {
         return NetworkManager()
     }
     
-     func makeCurrencyListViewController() -> CurrencyListViewController {
-        
-        let currencyListViewController = CurrencyDIContainer.create(with: makeCurrencyListViewModel())
+    func makeCurrencyListViewController() -> CurrencyListViewController {
+        let currencyListViewController = self.create(with: makeCurrencyListViewModel())
         return currencyListViewController
     }
     
     private func makeCurrencyListViewModel() -> CurrencyListViewModel{
-        
         return CurrencyListViewModel(currencyUseCase: makeCurrencyUseCase())
     }
     
-    static func create(with viewModel: CurrencyListViewModel) -> CurrencyListViewController {
+    func create(with viewModel: CurrencyListViewModel) -> CurrencyListViewController {
         let viewController = mainStoryBoard.createCurrencyListViewController()
         viewModel.delegate = viewController
         viewController.viewModel = viewModel
         return viewController
     }
-    
 }

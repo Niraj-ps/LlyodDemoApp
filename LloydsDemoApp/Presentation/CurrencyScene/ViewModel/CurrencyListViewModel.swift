@@ -8,7 +8,6 @@
 import Foundation
 
 protocol CurrencyListViewModelProtocol {
-    
     func requestCurrencyAPI()
     func numberOfRows() -> Int
     func getCurrencyAt(index : Int) -> Currency
@@ -28,7 +27,6 @@ class CurrencyListViewModel {
     }
 
     func searchCurrencyList(text : String) {
-        
         if text.isEmpty {
             currencySearchList = currencyList
         }

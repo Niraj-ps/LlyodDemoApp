@@ -8,7 +8,6 @@
 import Foundation
 
 struct Constants {
-    
     static let host = "api.vatcomply.com"
     static let currencyPath = "/currencies"
     static let currencyListText = "Currency List"
