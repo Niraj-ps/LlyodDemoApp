@@ -16,7 +16,7 @@ final class CurrencyFlowCoordinator {
     
     private weak var navigationController: UINavigationController?
     private let dependencies: CurrencyFlowCoordinatorDependencies
-    private weak var moviesListVC: CurrencyListViewController?
+    private weak var currencyListVC: CurrencyListViewController?
 
     init(navigationController: UINavigationController, dependencies : CurrencyFlowCoordinatorDependencies) {
         self.navigationController = navigationController
@@ -27,7 +27,7 @@ final class CurrencyFlowCoordinator {
         let actions = CurrencyListViewModelActions(showCurrencyDetails: showCurrencyDetails)
         let vc = dependencies.makeCurrencyListViewController(actions: actions)
         navigationController?.pushViewController(vc, animated: false)
-        moviesListVC = vc
+        currencyListVC = vc
     }
     
     private func showCurrencyDetails(currency: Currency) {
