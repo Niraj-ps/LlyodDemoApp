@@ -49,6 +49,13 @@ extension CurrencyListViewController : UITableViewDataSource {
     }
 }
 
+extension CurrencyListViewController : UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectItem(at: indexPath.row)
+    }
+}
+
 extension CurrencyListViewController : UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

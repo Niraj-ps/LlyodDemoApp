@@ -10,6 +10,7 @@ import UIKit
 
 protocol StoryboardProtocol {
     func createCurrencyListViewController() -> CurrencyListViewController
+    func createCurrencyDetailViewController() -> CurrencyDetailViewController
 }
 
 class LloydsMainStoryboard {
@@ -19,6 +20,13 @@ class LloydsMainStoryboard {
 extension LloydsMainStoryboard : StoryboardProtocol {
     func createCurrencyListViewController() -> CurrencyListViewController {
         guard let vc = storyboard.instantiateViewController(withIdentifier: "CurrencyListViewController") as? CurrencyListViewController else {
+                fatalError("Not initialised")
+            }
+        return vc
+    }
+    
+    func createCurrencyDetailViewController() -> CurrencyDetailViewController {
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "CurrencyDetailViewController") as? CurrencyDetailViewController else {
                 fatalError("Not initialised")
             }
         return vc

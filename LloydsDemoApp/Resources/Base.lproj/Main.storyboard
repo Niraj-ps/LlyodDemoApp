@@ -55,7 +55,9 @@
                             <constraint firstItem="YAj-1o-6rQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gO6-nA-ciE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="GBR-el-a87"/>
+                    <navigationItem key="navigationItem" id="GBR-el-a87">
+                        <barButtonItem key="backBarButtonItem" title=" " id="pgv-xa-Hr6"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="YAj-1o-6rQ" id="uy1-AP-yND"/>
                         <outlet property="tableView" destination="UrP-vc-aoB" id="Dih-TZ-dGt"/>
@@ -64,6 +66,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1013.0434782608696" y="97.767857142857139"/>
+        </scene>
+        <!--Currency Detail View Controller-->
+        <scene sceneID="F7g-rx-cyP">
+            <objects>
+                <viewController storyboardIdentifier="CurrencyDetailViewController" id="YvI-Iv-cPR" customClass="CurrencyDetailViewController" customModule="LloydsDemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BD0-Hx-wak">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Symbol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mot-SD-6c5">
+                                <rect key="frame" x="20" y="93" width="57.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXY-Cd-Rz5">
+                                <rect key="frame" x="20" y="138" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWN-bE-Bk5">
+                                <rect key="frame" x="112" y="93" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3X-Z8-f8Z">
+                                <rect key="frame" x="112" y="138" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HEp-ae-YTv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="x3X-Z8-f8Z" firstAttribute="top" secondItem="MXY-Cd-Rz5" secondAttribute="top" id="2ze-vC-qd2"/>
+                            <constraint firstItem="mot-SD-6c5" firstAttribute="leading" secondItem="HEp-ae-YTv" secondAttribute="leading" constant="20" id="3o2-2z-1PE"/>
+                            <constraint firstItem="MXY-Cd-Rz5" firstAttribute="leading" secondItem="mot-SD-6c5" secondAttribute="leading" id="4aX-bR-Z7f"/>
+                            <constraint firstItem="mot-SD-6c5" firstAttribute="top" secondItem="HEp-ae-YTv" secondAttribute="top" constant="49" id="6Ge-aY-f9g"/>
+                            <constraint firstItem="jWN-bE-Bk5" firstAttribute="top" secondItem="mot-SD-6c5" secondAttribute="top" id="Zag-ZV-Euk"/>
+                            <constraint firstItem="x3X-Z8-f8Z" firstAttribute="leading" secondItem="MXY-Cd-Rz5" secondAttribute="trailing" constant="51" id="dZg-9d-0oC"/>
+                            <constraint firstItem="jWN-bE-Bk5" firstAttribute="leading" secondItem="mot-SD-6c5" secondAttribute="trailing" constant="34.5" id="jVA-1X-rBi"/>
+                            <constraint firstItem="HEp-ae-YTv" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jWN-bE-Bk5" secondAttribute="trailing" constant="20" id="lOE-Ys-Gwx"/>
+                            <constraint firstItem="MXY-Cd-Rz5" firstAttribute="top" secondItem="mot-SD-6c5" secondAttribute="bottom" constant="24" id="rYi-3D-hCK"/>
+                            <constraint firstItem="HEp-ae-YTv" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="x3X-Z8-f8Z" secondAttribute="trailing" constant="20" id="uBA-7e-eL2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rle-AK-1P4"/>
+                    <connections>
+                        <outlet property="currencyCode" destination="x3X-Z8-f8Z" id="ffC-4k-plg"/>
+                        <outlet property="currencySymbol" destination="jWN-bE-Bk5" id="1Pw-9P-JkG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iVD-3o-ZEy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1729" y="98"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TbG-v4-CD3">

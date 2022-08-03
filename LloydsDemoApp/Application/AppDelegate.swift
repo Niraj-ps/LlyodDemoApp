@@ -11,10 +11,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    lazy var appDIContainer = AppDIContainer()
-
+    let appDIContainer = AppDIContainer()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        appDIContainer.loadCurrencyModule(window: window)
+        let appFlowCoordinator = AppFlowCoordinator(window: window, appDIContainer: appDIContainer)
+        appFlowCoordinator.start()
         return true
     }
 }

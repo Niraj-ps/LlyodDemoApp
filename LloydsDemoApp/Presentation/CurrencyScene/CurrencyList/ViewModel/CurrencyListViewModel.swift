@@ -12,6 +12,7 @@ protocol CurrencyListViewModelProtocol {
     func numberOfRows() -> Int
     func getCurrencyAt(index : Int) -> Currency
     func updateCurencyListUsingSearch(text : String)
+    func didSelectItem(at : Int)
 }
 
 class CurrencyListViewModel {
@@ -19,11 +20,13 @@ class CurrencyListViewModel {
     private var currencyList = [Currency]()
     private let currencyUseCase : CurrencyUseCaseProtocol
     private var currencySearchList = [Currency]()
-    var error: Error?
     weak var delegate : CurrencyViewProtocol?
-    
-    init(currencyUseCase : CurrencyUseCaseProtocol) {
+    private let actions: CurrencyListViewModelActions?
+    var error: Error?
+
+    init(currencyUseCase : CurrencyUseCaseProtocol, actions : CurrencyListViewModelActions? = nil) {
         self.currencyUseCase = currencyUseCase
+        self.actions = actions
     }
 
     func searchCurrencyList(text : String) {
@@ -64,4 +67,13 @@ extension CurrencyListViewModel : CurrencyListViewModelProtocol {
     func updateCurencyListUsingSearch(text : String){
         self.searchCurrencyList(text: text)
     }
+    
+    func didSelectItem(at index : Int) {
+       let currency = self.getCurrencyAt(index: index)
+        actions?.showCurrencyDetails(currency)
+    }
+}
+
+struct CurrencyListViewModelActions {
+    let showCurrencyDetails: (Currency) -> Void
 }

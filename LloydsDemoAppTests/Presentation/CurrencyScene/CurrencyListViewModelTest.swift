@@ -15,7 +15,6 @@ class CurrencyListViewModelTest: XCTestCase {
     }
     
     func test_whenCurrencyUseCaseRetrievesList_thenViewModelShouldHaveData() {
-       
         var currencyUseCase = CurrencyUseCaseMock(result: .success(Currency.stub()))
         currencyUseCase.expectation = self.expectation(description: "contains data")
         let viewModel = CurrencyListViewModel(currencyUseCase: currencyUseCase)
@@ -23,10 +22,8 @@ class CurrencyListViewModelTest: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
         XCTAssertEqual(viewModel.numberOfRows(), 2)
     }
-
     
     func test_whenCurrencyUseCaseReturnsError_thenViewModelContainsError() {
-        
         var currencyUseCase = CurrencyUseCaseMock(result: .failure(CurrencyError.someError))
         currencyUseCase.expectation = self.expectation(description: "contain errors")
         let viewModel = CurrencyListViewModel(currencyUseCase: currencyUseCase)
@@ -36,7 +33,6 @@ class CurrencyListViewModelTest: XCTestCase {
     }
     
     func test_SearchTextAvailableInViewModelData() {
-       
         var currencyUseCase = CurrencyUseCaseMock(result: .success(Currency.stub()))
         currencyUseCase.expectation = self.expectation(description: "contains search text in list")
         let viewModel = CurrencyListViewModel(currencyUseCase: currencyUseCase)
