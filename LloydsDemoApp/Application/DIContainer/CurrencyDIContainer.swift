@@ -8,9 +8,7 @@
 import UIKit
 
 final class CurrencyDIContainer {
-    
-    let mainStoryBoard = LloydsMainStoryboard()
-
+        
     private func makeCurrencyUseCase() -> CurrencyUseCaseProtocol {
         return CurrencyUseCase(currencyRepository: makeCurrencyRepository())
     }
@@ -32,38 +30,27 @@ final class CurrencyDIContainer {
     }
     
     func create(with viewModel: CurrencyListViewModel) -> CurrencyListViewController {
-        let viewController = mainStoryBoard.createCurrencyListViewController()
+        let viewController = CurrencyListViewController.instantiate()
         viewModel.delegate = viewController
         viewController.viewModel = viewModel
         return viewController
     }
     
-    func create(with viewModel: CurrencyDetailViewModel) -> CurrencyDetailViewController {
-        let viewController = mainStoryBoard.createCurrencyDetailViewController()
-        viewController.viewModel = viewModel
-        return viewController
-    }
-    
-    private func makeCurrencyDetailViewModel(currency: Currency) -> CurrencyDetailViewModel{
-        return CurrencyDetailViewModel(currency: currency)
-    }
-    
-    func makeCurrencyFlowCoordinator(navigationController: UINavigationController) -> CurrencyFlowCoordinator {
-        return CurrencyFlowCoordinator(navigationController: navigationController,
+    func makeCurrencyFlowCoordinator(navigationController: UINavigationController) -> CurrencyListFlowCoordinator {
+        return CurrencyListFlowCoordinator(navigationController: navigationController,
                                            dependencies: self)
     }
 }
 
-extension CurrencyDIContainer : CurrencyFlowCoordinatorDependencies {
-    
+extension CurrencyDIContainer : CurrencyListDependency {
+  
     func makeCurrencyListViewController(actions: CurrencyListViewModelActions) -> CurrencyListViewController {
         let currencyListViewController = self.create(with: makeCurrencyListViewModel(actions : actions))
         return currencyListViewController
     }
     
-    func makeCurrencyDetailViewController(currency: Currency) -> UIViewController {
-        let currencyListViewController = self.create(with: makeCurrencyDetailViewModel(currency: currency))
-        return currencyListViewController
+    func makeCurrencyDetailModule() -> CurrencyDetailDIContainer {
+        return CurrencyDetailDIContainer()
     }
 }
 

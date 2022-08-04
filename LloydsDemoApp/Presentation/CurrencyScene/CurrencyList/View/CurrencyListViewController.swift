@@ -11,7 +11,7 @@ protocol CurrencyViewProtocol: AnyObject {
     func updateItemData()
 }
 
-class CurrencyListViewController: UIViewController {
+class CurrencyListViewController: UIViewController, LloydsMainStoryboard {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!

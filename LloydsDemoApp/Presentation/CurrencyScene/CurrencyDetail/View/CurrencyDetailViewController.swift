@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CurrencyDetailViewController: UIViewController {
+class CurrencyDetailViewController: UIViewController,LloydsMainStoryboard {
 
     var viewModel: CurrencyDetailViewModelProtocol!
     @IBOutlet weak var currencyCode: UILabel!

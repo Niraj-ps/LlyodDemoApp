@@ -38,7 +38,7 @@ class CurrencyListViewModelTest: XCTestCase {
         let viewModel = CurrencyListViewModel(currencyUseCase: currencyUseCase)
         viewModel.requestCurrencyAPI()
         waitForExpectations(timeout: 5, handler: nil)
-        viewModel.searchCurrencyList(text: "Euro")
+        viewModel.updateCurencyListUsingSearch(text: "Euro")
         let currency = viewModel.getCurrencyAt(index: 0)
         XCTAssertEqual(currency.currencyName, "Euro")
     }

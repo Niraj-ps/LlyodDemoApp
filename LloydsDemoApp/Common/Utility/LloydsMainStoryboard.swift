@@ -5,30 +5,30 @@
 //  Created by Niraj Shah on 22/07/22.
 //
 
-import Foundation
 import UIKit
 
-protocol StoryboardProtocol {
-    func createCurrencyListViewController() -> CurrencyListViewController
-    func createCurrencyDetailViewController() -> CurrencyDetailViewController
+protocol LloydsMainStoryboard {
+    static func instantiate() -> Self
 }
 
-class LloydsMainStoryboard {
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-}
-
-extension LloydsMainStoryboard : StoryboardProtocol {
-    func createCurrencyListViewController() -> CurrencyListViewController {
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "CurrencyListViewController") as? CurrencyListViewController else {
-                fatalError("Not initialised")
-            }
-        return vc
+extension LloydsMainStoryboard where Self: UIViewController {
+    
+    static var storyboardName: String {
+        return "Main"
     }
     
-    func createCurrencyDetailViewController() -> CurrencyDetailViewController {
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "CurrencyDetailViewController") as? CurrencyDetailViewController else {
-                fatalError("Not initialised")
-            }
-        return vc
+    static var storyboardBundle: Bundle {
+        return .main
+    }
+    
+    static var storyboardIdentifier: String {
+        return String(describing: self)
+    }
+    
+    static func instantiate() -> Self {
+        guard let viewController = UIStoryboard(name: storyboardName, bundle: storyboardBundle).instantiateViewController(withIdentifier: storyboardIdentifier) as? Self else {
+            fatalError("Unable to Instantiate View Controller With Storyboard Identifier \(storyboardIdentifier)")
+        }
+        return viewController
     }
 }

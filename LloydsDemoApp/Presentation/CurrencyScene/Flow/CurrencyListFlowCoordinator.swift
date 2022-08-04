@@ -1,5 +1,5 @@
 //
-//  CurrencyFlowCoordinator.swift
+//  CurrencyListFlowCoordinator.swift
 //  LloydsDemoApp
 //
 //  Created by Niraj Shah on 03/08/22.
@@ -7,17 +7,17 @@
 
 import UIKit
 
-protocol CurrencyFlowCoordinatorDependencies {
+protocol CurrencyListDependency {
     func makeCurrencyListViewController(actions: CurrencyListViewModelActions) -> CurrencyListViewController
-    func makeCurrencyDetailViewController(currency: Currency) -> UIViewController
+    func makeCurrencyDetailModule() -> CurrencyDetailDIContainer
 }
 
-final class CurrencyFlowCoordinator {
+final class CurrencyListFlowCoordinator {
     
     private weak var navigationController: UINavigationController?
-    private let dependencies: CurrencyFlowCoordinatorDependencies
+    private let dependencies: CurrencyListDependency
 
-    init(navigationController: UINavigationController, dependencies : CurrencyFlowCoordinatorDependencies) {
+    init(navigationController: UINavigationController, dependencies : CurrencyListDependency) {
         self.navigationController = navigationController
         self.dependencies = dependencies
     }
@@ -29,7 +29,8 @@ final class CurrencyFlowCoordinator {
     }
     
     private func showCurrencyDetails(currency: Currency) {
-        let vc = dependencies.makeCurrencyDetailViewController(currency: currency)
-        navigationController?.pushViewController(vc, animated: true)
+        let currencyDetailDIContainer = dependencies.makeCurrencyDetailModule()
+        let flow = currencyDetailDIContainer.makeCurrencyDetailFlowCoordinator(navigationController: navigationController)
+        flow.start(with: currency)
     }
 }

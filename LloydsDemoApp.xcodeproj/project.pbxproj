@@ -13,8 +13,10 @@
 		F003ACD0289A33FE0001E29E /* CurrencyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003ACCF289A33FE0001E29E /* CurrencyDetailViewController.swift */; };
 		F003ACD2289A34180001E29E /* CurrencyDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003ACD1289A34180001E29E /* CurrencyDetailViewModel.swift */; };
 		F003ACD4289A3C770001E29E /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003ACD3289A3C770001E29E /* AppFlowCoordinator.swift */; };
-		F003ACD6289A4DDB0001E29E /* CurrencyFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003ACD5289A4DDB0001E29E /* CurrencyFlowCoordinator.swift */; };
+		F003ACD6289A4DDB0001E29E /* CurrencyListFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003ACD5289A4DDB0001E29E /* CurrencyListFlowCoordinator.swift */; };
 		F003ACDF289A71080001E29E /* CurrencyDetailViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003ACDE289A71080001E29E /* CurrencyDetailViewModelTest.swift */; };
+		F003ACE7289BE81C0001E29E /* CurrencyDetailDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003ACE6289BE81C0001E29E /* CurrencyDetailDIContainer.swift */; };
+		F003ACE9289BEE070001E29E /* CurrencyDetailFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003ACE8289BEE070001E29E /* CurrencyDetailFlowCoordinator.swift */; };
 		F046AB802892CCB700363893 /* CurrencyEndPointMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F046AB7F2892CCB700363893 /* CurrencyEndPointMock.swift */; };
 		F063921A28851C8600C05A6A /* CurrencyDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063921928851C8600C05A6A /* CurrencyDIContainer.swift */; };
 		F063921C28855BBD00C05A6A /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063921B28855BBD00C05A6A /* AppDIContainer.swift */; };
@@ -82,8 +84,10 @@
 		F003ACCF289A33FE0001E29E /* CurrencyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailViewController.swift; sourceTree = "<group>"; };
 		F003ACD1289A34180001E29E /* CurrencyDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailViewModel.swift; sourceTree = "<group>"; };
 		F003ACD3289A3C770001E29E /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
-		F003ACD5289A4DDB0001E29E /* CurrencyFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFlowCoordinator.swift; sourceTree = "<group>"; };
+		F003ACD5289A4DDB0001E29E /* CurrencyListFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListFlowCoordinator.swift; sourceTree = "<group>"; };
 		F003ACDE289A71080001E29E /* CurrencyDetailViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailViewModelTest.swift; sourceTree = "<group>"; };
+		F003ACE6289BE81C0001E29E /* CurrencyDetailDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailDIContainer.swift; sourceTree = "<group>"; };
+		F003ACE8289BEE070001E29E /* CurrencyDetailFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailFlowCoordinator.swift; sourceTree = "<group>"; };
 		F046AB7F2892CCB700363893 /* CurrencyEndPointMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyEndPointMock.swift; sourceTree = "<group>"; };
 		F063921928851C8600C05A6A /* CurrencyDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDIContainer.swift; sourceTree = "<group>"; };
 		F063921B28855BBD00C05A6A /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
@@ -213,7 +217,8 @@
 		F003ACDD289A61380001E29E /* Flow */ = {
 			isa = PBXGroup;
 			children = (
-				F003ACD5289A4DDB0001E29E /* CurrencyFlowCoordinator.swift */,
+				F003ACD5289A4DDB0001E29E /* CurrencyListFlowCoordinator.swift */,
+				F003ACE8289BEE070001E29E /* CurrencyDetailFlowCoordinator.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 			children = (
 				F063921B28855BBD00C05A6A /* AppDIContainer.swift */,
 				F063921928851C8600C05A6A /* CurrencyDIContainer.swift */,
+				F003ACE6289BE81C0001E29E /* CurrencyDetailDIContainer.swift */,
 			);
 			path = DIContainer;
 			sourceTree = "<group>";
@@ -773,6 +779,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F003ACE7289BE81C0001E29E /* CurrencyDetailDIContainer.swift in Sources */,
 				F07EA655287C2FC000D68CA1 /* Currency.swift in Sources */,
 				F063923E2886F79800C05A6A /* CurrencyDTO.swift in Sources */,
 				F063925A288D699300C05A6A /* CurrencyEndpoint.swift in Sources */,
@@ -786,11 +793,12 @@
 				F07EA665287E8D8E00D68CA1 /* CurrencyUseCase.swift in Sources */,
 				F07EA65D287D64C800D68CA1 /* Constants.swift in Sources */,
 				F003ACD4289A3C770001E29E /* AppFlowCoordinator.swift in Sources */,
-				F003ACD6289A4DDB0001E29E /* CurrencyFlowCoordinator.swift in Sources */,
+				F003ACD6289A4DDB0001E29E /* CurrencyListFlowCoordinator.swift in Sources */,
 				F063921C28855BBD00C05A6A /* AppDIContainer.swift in Sources */,
 				F0639256288D3C4D00C05A6A /* Endpoint.swift in Sources */,
 				F0639258288D615C00C05A6A /* CurrencyService.swift in Sources */,
 				F07EA621287BEEB500D68CA1 /* AppDelegate.swift in Sources */,
+				F003ACE9289BEE070001E29E /* CurrencyDetailFlowCoordinator.swift in Sources */,
 				F0639242288A5C2900C05A6A /* LloydsMainStoryboard.swift in Sources */,
 				F07EA65B287D556900D68CA1 /* CurrencyRepository.swift in Sources */,
 				F06392402886F8F500C05A6A /* CurrencyResponse.swift in Sources */,
@@ -937,7 +945,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = light;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1122,7 +1130,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = light;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1153,7 +1161,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = light;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
