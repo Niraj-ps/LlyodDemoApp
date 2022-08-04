@@ -19,9 +19,9 @@ final class CurrencyDetailDIContainer {
         return CurrencyDetailViewModel(currency: currency)
     }
     
-    func makeCurrencyDetailFlowCoordinator(navigationController: UINavigationController?) -> CurrencyDetailFlowCoordinator {
+    func makeCurrencyDetailFlowCoordinator(navigationController: UINavigationController?, currency : Currency) -> CurrencyDetailFlowCoordinator {
         return CurrencyDetailFlowCoordinator(navigationController: navigationController,
-                                           dependencies: self)
+                                             dependencies: self, currency: currency)
     }
 }
 

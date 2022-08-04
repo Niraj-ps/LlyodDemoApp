@@ -30,7 +30,7 @@ final class CurrencyListFlowCoordinator {
     
     private func showCurrencyDetails(currency: Currency) {
         let currencyDetailDIContainer = dependencies.makeCurrencyDetailModule()
-        let flow = currencyDetailDIContainer.makeCurrencyDetailFlowCoordinator(navigationController: navigationController)
-        flow.start(with: currency)
+        let flow = currencyDetailDIContainer.makeCurrencyDetailFlowCoordinator(navigationController: navigationController, currency: currency)
+        flow.start()
     }
 }

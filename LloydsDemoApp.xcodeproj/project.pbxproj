@@ -183,6 +183,7 @@
 		F003ACD7289A60C20001E29E /* CurrencyDetail */ = {
 			isa = PBXGroup;
 			children = (
+				F003ACEA289C0DC40001E29E /* Flow */,
 				F003ACDB289A60FC0001E29E /* ViewModel */,
 				F003ACD8289A60CD0001E29E /* View */,
 			);
@@ -208,6 +209,7 @@
 		F003ACDC289A611E0001E29E /* CurrencyList */ = {
 			isa = PBXGroup;
 			children = (
+				F003ACDD289A61380001E29E /* Flow */,
 				F07EA660287D9EF700D68CA1 /* View */,
 				F07EA65F287D9EE600D68CA1 /* ViewModel */,
 			);
@@ -218,6 +220,13 @@
 			isa = PBXGroup;
 			children = (
 				F003ACD5289A4DDB0001E29E /* CurrencyListFlowCoordinator.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		F003ACEA289C0DC40001E29E /* Flow */ = {
+			isa = PBXGroup;
+			children = (
 				F003ACE8289BEE070001E29E /* CurrencyDetailFlowCoordinator.swift */,
 			);
 			path = Flow;
@@ -244,7 +253,6 @@
 		F06392302886F3AC00C05A6A /* CurrencyScene */ = {
 			isa = PBXGroup;
 			children = (
-				F003ACDD289A61380001E29E /* Flow */,
 				F003ACDC289A611E0001E29E /* CurrencyList */,
 				F003ACD7289A60C20001E29E /* CurrencyDetail */,
 			);

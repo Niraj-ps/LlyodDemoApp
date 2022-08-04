@@ -15,14 +15,16 @@ final class CurrencyDetailFlowCoordinator {
     
     private weak var navigationController: UINavigationController?
     private let dependencies: CurrencyDetailDependency
-
-    init(navigationController: UINavigationController?, dependencies : CurrencyDetailDependency) {
+    let currency : Currency!
+    
+    init(navigationController: UINavigationController?, dependencies : CurrencyDetailDependency, currency : Currency) {
         self.navigationController = navigationController
         self.dependencies = dependencies
+        self.currency = currency
     }
     
-    func start(with currency : Currency) {
-        let vc = dependencies.makeCurrencyDetailViewController(currency: currency)
-        navigationController?.pushViewController(vc, animated: true)
+    func start() {
+        let currencyDetailVC = dependencies.makeCurrencyDetailViewController(currency: currency)
+        navigationController?.pushViewController(currencyDetailVC, animated: true)
     }
 }
