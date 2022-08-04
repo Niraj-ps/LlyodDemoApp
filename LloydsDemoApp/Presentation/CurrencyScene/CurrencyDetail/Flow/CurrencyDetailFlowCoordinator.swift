@@ -15,7 +15,7 @@ final class CurrencyDetailFlowCoordinator {
     
     private weak var navigationController: UINavigationController?
     private let dependencies: CurrencyDetailDependency
-    let currency : Currency!
+    let currency : Currency
     
     init(navigationController: UINavigationController?, dependencies : CurrencyDetailDependency, currency : Currency) {
         self.navigationController = navigationController
